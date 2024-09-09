@@ -1,0 +1,106 @@
+[
+  {
+    "name": "Check if README.md is present",
+    "category": "documentation",
+    "location": "README.md",
+    "severity": "info",
+    "fileType": "text",
+    "test": [
+      {
+        "option": "/[\\S\\s]+/gm",
+        "score": 5,
+        "match": "README.md is present",
+        "notMatch": "README.md is missing",
+        "continue": false
+      },
+      {
+        "option": "/# /gm",
+        "score": 3,
+        "match": "README.md has title",
+        "notMatch": "README.md not has title"
+      }
+    ]
+  },
+  {
+    "name": "Check if .gitignore is present",
+    "category": "documentation",
+    "location": ".gitignore",
+    "severity": "info",
+    "fileType": "text",
+    "test": [
+      {
+        "option": "/[\\S\\s]+/gm",
+        "score": 3,
+        "match": ".gitignore is present",
+        "notMatch": ".gitignore is missing"
+      }
+    ]
+  },
+  {
+    "name": "Check if Dockerfile has node 22",
+    "category": "documentation",
+    "location": "Dockerfile",
+    "severity": "critical",
+    "fileType": "text",
+    "test": [
+      {
+        "option": "/ node:/",
+        "score": 1,
+        "match": "Using node",
+        "notMatch": "Not using node",
+        "continue": false
+      },
+      {
+        "option": "/node:22/",
+        "score": 3,
+        "match": "Using node 22",
+        "notMatch": "Not using node 22"
+      }
+    ]
+  },
+  {
+    "name": "package.json has VERSION placeholder",
+    "category": "documentation",
+    "location": "package.json",
+    "severity": "info",
+    "fileType": "text",
+    "test": [
+      {
+        "option": "/\"VERSION\"/",
+        "score": 3,
+        "match": "Has placeholder",
+        "notMatch": "Does not have placeholder"
+      }
+    ]
+  },
+  {
+    "name": "package.json doesn't use node-sass",
+    "category": "code",
+    "location": "package.json",
+    "severity": "critical",
+    "fileType": "text",
+    "test": [
+      {
+        "option": "/^(?!.*node-sass).*$/isg",
+        "score": 7,
+        "match": "Does not have node-sass",
+        "notMatch": "Has node-sass"
+      }
+    ]
+  },
+  {
+    "name": "Dockerfile does not have bitnami/node",
+    "category": "code",
+    "location": "Dockerfile",
+    "severity": "high",
+    "fileType": "text",
+    "test": [
+      {
+        "option": "/^(?!.*bitnami/node).*$/isg",
+        "score": 5,
+        "match": "Does not have bitnami/node",
+        "notMatch": "Has bitnami/node"
+      }
+    ]
+  }
+]
