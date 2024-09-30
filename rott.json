@@ -42,6 +42,7 @@
     "location": "Dockerfile",
     "severity": "critical",
     "fileType": "text",
+    "ignoreNotExists": true,
     "test": [
       {
         "option": "/ node:/",
@@ -64,6 +65,7 @@
     "location": "package.json",
     "severity": "info",
     "fileType": "text",
+    "ignoreNotExists": true,
     "test": [
       {
         "option": "/\"VERSION\"/",
@@ -79,6 +81,7 @@
     "location": "package.json",
     "severity": "critical",
     "fileType": "text",
+    "ignoreNotExists": true,
     "test": [
       {
         "option": "/^(?!.*node-sass).*$/isg",
